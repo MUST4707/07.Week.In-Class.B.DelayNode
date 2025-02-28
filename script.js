@@ -61,6 +61,21 @@ const updateStepTime = function() {
     stepLabel.innerText = `${stepSlider.value} ms`;
 };
 
+const updateDelay = function(){
+    delayLabel.innerText = `${delaySlider.value} ms`
+}
+
+const updateFeedback= function(){
+    feedbackLabel.innerText = `${feedbackSlider.value} %`
+}
+
+const updateEQ= function(){
+    eqLabel.innerText = `${eqSlider.value} Hz`
+
+}
+
+
+
 /**
  * Randomly selects a frequency from the E♭ minor pentatonic scale
  * and sets it as the oscillator frequency with exponential glide.
@@ -98,11 +113,16 @@ masterGain.connect(audCtx.destination);
 let enableButton = document.getElementById("enableAudio");
 let fader = document.getElementById("masterFader");
 let faderLabel = document.getElementById("fadeLabel");
-let eqLabel = document.getElementById("eqLabel");
 let glideSlider = document.getElementById("GlideTime");
 let stepSlider = document.getElementById("StepTime");
 let stepLabel = document.getElementById("stepLabel");
 let glideLabel = document.getElementById("glideLabel");
+let delaySlider = document.getElementById("DelayTime");
+let delayLabel = document.getElementById("delayLabel");
+let feedbackSlider = document.getElementById("FeedbackAmount");
+let feedbackLabel = document.getElementById("fbLabel");
+let eqSlider = document.getElementById("cutoffFreq");
+let eqLabel = document.getElementById("eqLabel");
 
 // ------------------------- Add Event Listeners --------------------------
 
@@ -110,3 +130,6 @@ enableButton.addEventListener("click", enableAudio);
 fader.addEventListener("input", updateMasterGain);
 glideSlider.addEventListener("input", updateGlide);
 stepSlider.addEventListener("input", updateStepTime);
+delaySlider.addEventListener("input", updateDelay);
+feedbackSlider.addEventListener("input", updateFeedback);
+eqSlider.addEventListener("input", updateEQ);
