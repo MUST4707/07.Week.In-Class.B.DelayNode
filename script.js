@@ -61,14 +61,22 @@ const updateStepTime = function() {
     stepLabel.innerText = `${stepSlider.value} ms`;
 };
 
+/**
+ * Updates the delay time based on the slider input.
+ */
 const updateDelay = function(){
     delayLabel.innerText = `${delaySlider.value} ms`
 }
-
+/**
+ * Updates the feedback amount based on the slider input.
+ */
 const updateFeedback= function(){
     feedbackLabel.innerText = `${feedbackSlider.value} %`
 }
 
+/**
+ * Updates the cutoff frequency based on the slider input.
+ */
 const updateEQ= function(){
     eqLabel.innerText = `${eqSlider.value} Hz`
 
@@ -81,9 +89,13 @@ const updateEQ= function(){
  * and sets it as the oscillator frequency with exponential glide.
  */
 const randoStep = function() {
+    //This is a formula to find a random integer between zero and the length of the array.
+    //thisis good for getting a random element from the array
     let randIndex = Math.floor(Math.random() * ebMinPentFreqs.length);
     let newFreq = ebMinPentFreqs[randIndex];
     sawOsc.frequency.exponentialRampToValueAtTime(newFreq, audCtx.currentTime + glideTime / 1000);
+    //we haven't covered this yet, but the next line is a form of recursion, "calling the function within itself"
+    //setTimeout is a delay, it waits a certain number of milliseconds to execute the funtion.
     setTimeout(randoStep, stepTime);
 };
 
